@@ -17,3 +17,16 @@ Named return values
 
 Naked return statements
 - Should only be used in short functions. Can harm readability in longer functions
+
+**Pass around values**
+- Functions are values as well so they can be passed around 
+- Functions may also be used as function arguments and return values
+```
+func compute(fn (x, y float64) float64) float64 {\
+    ...
+}
+```
+
+**Function closures**
+- Go has closures which is a function that references variables from outisde is body
+- The function may access and assign the referenced variables
