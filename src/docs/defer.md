@@ -7,7 +7,7 @@
 defer fmt.Println("world") //arguments are evaluated
 // this will be called first
 fmt.Println("world")
-
+```
 - What will the following print out?
 ```
 fmt.Println("counting")

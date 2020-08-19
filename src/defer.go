@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	defer fmt.Println("Hello Senna")
+	// defer fmt.Println("world")
 
-	println("Good morning Senna")
+	// fmt.Println("hello")
 
 	fmt.Println("counting")
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i <= 10; i++ {
 		defer fmt.Println(i)
 	}
 
