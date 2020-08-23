@@ -20,6 +20,14 @@ type Dog interface {
 
 **empty interface**
 - implements zero methods
+- may hold values of any type
+
+**type assertions**
+- type assertion provides access to an interfaces concrete value
+- statement below asserts that interface value i contains type T
+```t, ok := i.(T)```
+
+**type switch**
 
 Examples
 ```
