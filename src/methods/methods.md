@@ -2,7 +2,7 @@
 - methods are functions with a special receiver argument
 - you can call methods on different types e.g. structs, floats
 ```
-func (s Dog) Bark() int {
+func (s Dog) Bark() string {
     return "WOOF!"
 }
 
