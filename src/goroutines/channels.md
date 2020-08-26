@@ -4,7 +4,7 @@
 - Channels by default are pointers 
 - A channel can only support one data type. Not other types can be allowed in that channel
 - You can create a channel with: ```make(chan <type>)```
-- Sends and receives are blocked until sender and receiver are ready
+- Sends and receives are blocked until sender and receiver are ready. When data is available in the channel it does not block. Only blocks when nothing is in the channel
 **channel operations are blocked by nature. when data is written to a channel, goroutine is blocked until another goroutine reads from that channel**
 
 Sending data through Channels
