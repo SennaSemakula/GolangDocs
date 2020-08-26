@@ -1,7 +1,7 @@
 # Goroutines
 - A goroutine is a lightweight thread of execution
-- It allows us to run funciton calls asynchronously 
-- You can call a function in a goroutine eby prefixing it with the go keyword beforehand
+- It allows us to run function calls asynchronously 
+- You can call a function in a goroutine by prefixing it with the go keyword beforehand
 **NOTE:**
 without goroutines we will have blocking function calls which will slow down the execution of our program
 
