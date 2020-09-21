@@ -9,9 +9,21 @@ import (
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/view/"):]
-	p, _ := wiki.LoadPage(title)
+	p, err := wiki.LoadPage(title)
 
-	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
+	// Redirect user if page does not exist
+	if err != nil {
+		http.Redirect(w, r, "/edit/"+title, http.StatusFound)
+		return
+	}
+
+	renderTemplate(w, "view", p)
+}
+
+func renderTemplate(w http.ResponseWriter, file string, p *wiki.Page) {
+	tmpl, _ := template.ParseFiles(file + ".html")
+
+	tmpl.Execute(w, p)
 }
 
 func editHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,20 +36,19 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 		p = &wiki.Page{Title: title}
 	}
 
-	fmt.Fprintf(w, "<h1> Editing %s </h1>"+
-					"<form action=\"save/ %s\" method=\"POST\">"+
-					"<textarea name=\"body\">%s</textarea><br>"+
-					"<input type=\"submit\" value=\"Save\">"+
-					"</form>", p.Title, p.Title, p.Body)
+	renderTemplate(w, "edit", p)
 }
 
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/save/"):]
 
-	fmt.Println(r.Body)
+	body := r.FormValue("body")
 
-	// wiki.SaveF
-	fmt.Fprintf(w, "<h1>Saving file %s</h1>", title)
+	p := &wiki.Page{Title: title, Body: []byte(body)}
+
+	p.Save()
+
+	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
 func main() {
