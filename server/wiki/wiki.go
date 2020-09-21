@@ -24,7 +24,7 @@ func LoadPage(title string) (*Page, error) {
 }
 
 // Receiver caled save that takes in a Page struct
-func (p *Page) save() error {
+func (p *Page) Save() error {
 
 	// read/write permissions for the current user
 	err := ioutil.WriteFile(p.Title+".txt", p.Body, 0600)
