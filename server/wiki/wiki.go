@@ -23,7 +23,7 @@ func LoadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-// Receiver caled save that takes in a Page struct
+// Receiver called save that takes in a Page struct
 func (p *Page) Save() error {
 
 	// read/write permissions for the current user
